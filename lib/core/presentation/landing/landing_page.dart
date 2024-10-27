@@ -12,8 +12,13 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset('assets/bg-landing.png'),
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width,
+            height: MediaQuery.sizeOf(context).height,
+            child: Image.asset(
+              'assets/bg-landing.png',
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 35),
@@ -25,14 +30,16 @@ class LandingPage extends StatelessWidget {
                 const Spacer(),
                 CustomButton(
                   text: 'Iniciar Sesion',
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<RouterCubit>().goToLogin();
+                  },
                 ),
                 20.h,
                 CustomButton(
                   text: 'Registrarme',
                   color: Colors.white.withOpacity(.2),
                   onPressed: () {
-                    context.read<RouterCubit>().goToLogin();
+                    context.read<RouterCubit>().goToRegister();
                   },
                 )
               ],
