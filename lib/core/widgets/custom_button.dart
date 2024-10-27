@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color? color;
   final double? marginV;
   final double? marginH;
+  final Icon? icon;
+  final bool enabled;
+  final void Function() onPressed;
+  final double? width;
   const CustomButton(
       {super.key,
-      required this.text,
+      this.text,
       this.color = const Color(0xff82bc02),
       this.marginV,
-      this.marginH});
+      this.marginH,
+      this.enabled = true,
+      required this.onPressed,
+      this.icon,
+      this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +36,21 @@ class CustomButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: enabled ? onPressed : null,
           child: SizedBox(
+            width: width,
             height: 53,
             child: Center(
               child: Row(
-                children: [
-                  Text(
-                    text,
-                    style: TextStyle(color: Colors.white),
-                  )
-                ],
                 mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon ?? const SizedBox.shrink(),
+                  if (text != null)
+                    Text(
+                      text!,
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    )
+                ],
               ),
             ),
           )),
