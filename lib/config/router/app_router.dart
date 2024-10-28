@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tennis_court/core/presentation/landing/home_page.dart';
+import 'package:tennis_court/core/presentation/landing/main_page.dart';
 import 'package:tennis_court/core/presentation/landing/landing_page.dart';
 import 'package:tennis_court/core/presentation/landing/login_page.dart';
 import 'package:tennis_court/core/presentation/landing/register_page.dart';
+import 'package:tennis_court/core/presentation/landing/reservation_page.dart';
 
 final _publicRouter = GoRouter(routes: [
   GoRoute(
@@ -19,9 +20,13 @@ final _publicRouter = GoRouter(routes: [
     builder: (context, state) => const RegisterPage(),
   ),
   GoRoute(
-    path: '/home',
-    builder: (context, state) => const HomePage(),
-  )
+    path: '/main',
+    builder: (context, state) => MainPage(),
+  ),
+  GoRoute(
+    path: '/reservation',
+    builder: (context, state) => const ReservationPage(),
+  ),
 ]);
 
 class RouterCubit extends Cubit<GoRouter> {
@@ -43,7 +48,11 @@ class RouterCubit extends Cubit<GoRouter> {
     state.go('/register');
   }
 
-  void goToHome() {
-    state.go('/home');
+  void goToMain() {
+    state.go('/main');
+  }
+
+  void goToReservation() {
+    state.go('/reservation');
   }
 }

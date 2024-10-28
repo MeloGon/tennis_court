@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                     CustomButton(
                       text: 'Iniciar sesión',
                       onPressed: () {
-                        context.read<RouterCubit>().goToHome();
+                        context.read<RouterCubit>().goToMain();
                       },
                     ),
                     60.h,

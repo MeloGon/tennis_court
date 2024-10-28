@@ -9,6 +9,8 @@ class CustomButton extends StatelessWidget {
   final bool enabled;
   final void Function() onPressed;
   final double? width;
+  final double? height;
+  final double? fontSize;
   const CustomButton(
       {super.key,
       this.text,
@@ -18,7 +20,9 @@ class CustomButton extends StatelessWidget {
       this.enabled = true,
       required this.onPressed,
       this.icon,
-      this.width});
+      this.width,
+      this.height = 53,
+      this.fontSize = 20});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class CustomButton extends StatelessWidget {
           onPressed: enabled ? onPressed : null,
           child: SizedBox(
             width: width,
-            height: 53,
+            height: height,
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +52,7 @@ class CustomButton extends StatelessWidget {
                   if (text != null)
                     Text(
                       text!,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Colors.white, fontSize: fontSize),
                     )
                 ],
               ),
