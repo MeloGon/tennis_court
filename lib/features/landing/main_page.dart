@@ -3,7 +3,7 @@ import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
 
 import 'package:tennis_court/features/landing/home_page.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -40,13 +40,13 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.notifications_outlined,
-                  color: Colors.white,
+                  color: AppColors.white,
                 )),
             IconButton(
                 onPressed: () {},
                 icon: const Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: AppColors.white,
                 )),
           ],
         ),
@@ -72,10 +72,10 @@ class _MainPageState extends State<MainPage> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: AppColors.green,
+        unselectedItemColor: AppColors.grey,
         showUnselectedLabels: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
       ),
     );
   }
@@ -87,13 +87,13 @@ class _MainPageState extends State<MainPage> {
           ? Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: const Color(0xff82bc02),
+                color: AppColors.greenPrimary,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, color: Colors.white),
+                  Icon(icon, color: AppColors.white),
                   Text(
                     label,
                   ),

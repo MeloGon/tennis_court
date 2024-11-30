@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -17,7 +17,7 @@ class LandingPage extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
             child: Image.asset(
-              'assets/bg-landing.png',
+              AppImages.backgroundLanding,
               fit: BoxFit.cover,
             ),
           ),
@@ -27,7 +27,7 @@ class LandingPage extends StatelessWidget {
               children: [
                 SizedBox(
                     width: MediaQuery.sizeOf(context).width * .5,
-                    child: Image.asset('assets/logo.png')),
+                    child: Image.asset(AppImages.logo)),
                 const Spacer(),
                 CustomButton(
                   text: AppStrings.logIn,
@@ -38,7 +38,7 @@ class LandingPage extends StatelessWidget {
                 20.h,
                 CustomButton(
                   text: AppStrings.signUp,
-                  color: Colors.white.withOpacity(.2),
+                  color: AppColors.white.withOpacity(.2),
                   onPressed: () {
                     context.read<RouterCubit>().goToRegister();
                   },

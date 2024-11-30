@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tennis_court/core/config.dart';
 
 class CustomButton extends StatelessWidget {
   final String? text;
@@ -14,7 +15,7 @@ class CustomButton extends StatelessWidget {
   const CustomButton(
       {super.key,
       this.text,
-      this.color = const Color(0xff82bc02),
+      this.color = AppColors.greenPrimary,
       this.marginV,
       this.marginH,
       this.enabled = true,
@@ -52,7 +53,8 @@ class CustomButton extends StatelessWidget {
                   if (text != null)
                     Text(
                       text!,
-                      style: TextStyle(color: Colors.white, fontSize: fontSize),
+                      style:
+                          TextStyle(color: AppColors.white, fontSize: fontSize),
                     )
                 ],
               ),

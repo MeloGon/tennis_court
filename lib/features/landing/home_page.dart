@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
 
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

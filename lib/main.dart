@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Tennis Court',
       routerConfig: appRouterCubit,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Poppins'),
     );
   }
 }

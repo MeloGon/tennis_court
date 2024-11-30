@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/features/widgets/custom_textfield.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/custom_textfield.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -18,7 +18,7 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/header-login.png'),
+                Image.asset(AppImages.headerLogin),
                 20.h,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -28,7 +28,7 @@ class RegisterPage extends StatelessWidget {
                       Text(AppStrings.register),
                       Container(
                         height: 1,
-                        color: Colors.grey,
+                        color: AppColors.grey,
                         width: 70,
                       ),
                       60.h,

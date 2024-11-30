@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class ReservationPage extends StatelessWidget {
   const ReservationPage({super.key});
@@ -19,7 +19,7 @@ class ReservationPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/court-1.png',
+                    AppImages.court1,
                     fit: BoxFit.cover,
                   ),
                 )
@@ -34,7 +34,7 @@ class ReservationPage extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              color: Colors.white,
+              color: AppColors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,7 +74,7 @@ class ReservationPage extends StatelessWidget {
                           hintText: 'Asss',
                           border: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.red, width: 2)),
+                                  BorderSide(color: AppColors.red, width: 2)),
                         ),
                         items: [
                           DropdownMenuItem(child: Text('text')),
@@ -110,7 +110,7 @@ class ReservationPage extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: .2),
+                        border: Border.all(color: AppColors.black, width: .2),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextField(
                       maxLines: 4,

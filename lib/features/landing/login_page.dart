@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/features/widgets/custom_textfield.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/global_widgets/custom_textfield.dart';
+import 'package:tennis_court/global_widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset('assets/header-login.png'),
+          Image.asset(AppImages.headerLogin),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
                     CustomButton(
                       icon: const Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       onPressed: () {
                         context.read<RouterCubit>().goLanding();
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                     Text(AppStrings.logIn),
                     Container(
                       height: 1,
-                      color: Colors.grey,
+                      color: AppColors.grey,
                       width: 70,
                     ),
                     60.h,

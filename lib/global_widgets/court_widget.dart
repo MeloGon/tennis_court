@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/features/widgets/custom_button.dart';
+import 'package:tennis_court/global_widgets/custom_button.dart';
 
 class CourtWidget extends StatelessWidget {
   const CourtWidget({super.key});
@@ -19,7 +20,7 @@ class CourtWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  "assets/court-1.png",
+                  AppImages.court1,
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -58,7 +59,7 @@ class CourtWidget extends StatelessWidget {
                       onPressed: () {
                         context.read<RouterCubit>().goToReservation();
                       },
-                      text: 'Reservar',
+                      text: AppStrings.reserve,
                     ),
                   ],
                 ),

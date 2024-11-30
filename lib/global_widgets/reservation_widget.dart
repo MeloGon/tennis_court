@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tennis_court/features/widgets/widgets.dart';
+import 'package:tennis_court/core/resources/app_images.dart';
 
 class ReservationWidget extends StatelessWidget {
   const ReservationWidget({super.key});
@@ -20,7 +20,7 @@ class ReservationWidget extends StatelessWidget {
         child: SizedBox.square(
           dimension: 60,
           child: Image.asset(
-            "assets/court-1.png",
+            AppImages.court1,
             fit: BoxFit.cover,
           ),
         ),
