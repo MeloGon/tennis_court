@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/custom_textfield.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
+import 'package:tennis_court/features/widgets/custom_textfield.dart';
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -32,7 +33,7 @@ class LoginPage extends StatelessWidget {
                       width: 30,
                     ),
                     200.h,
-                    StyledText.headlineLarge('Iniciar sesión'),
+                    Text(AppStrings.logIn),
                     Container(
                       height: 1,
                       color: Colors.grey,
@@ -40,12 +41,12 @@ class LoginPage extends StatelessWidget {
                     ),
                     60.h,
                     CustomTextfield(
-                      label: "Email",
+                      label: AppStrings.email,
                       icon: Icon(Icons.email_outlined),
                     ),
                     20.h,
                     CustomTextfield(
-                      label: "Contraseña",
+                      label: AppStrings.password,
                       icon: Icon(Icons.lock_outline),
                     ),
                     CheckboxListTile(
@@ -53,15 +54,14 @@ class LoginPage extends StatelessWidget {
                       controlAffinity: ListTileControlAffinity.leading,
                       value: true,
                       onChanged: (value) {},
-                      title: StyledText.bodyMedium('Recordar contraseña'),
+                      title: Text(AppStrings.rememberPassword),
                     ),
                     Align(
                         alignment: Alignment.center,
-                        child:
-                            StyledText.bodyLarge('Olvidaste tu contraseña?')),
+                        child: Text(AppStrings.forgotPassword)),
                     40.h,
                     CustomButton(
-                      text: 'Iniciar sesión',
+                      text: AppStrings.logIn,
                       onPressed: () {
                         context.read<RouterCubit>().goToMain();
                       },
@@ -70,11 +70,10 @@ class LoginPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        StyledText.bodyLarge('Aun no tienes cuenta ?'),
+                        Text(AppStrings.dontHaveAccountYet),
                         5.w,
-                        StyledText.bodyLarge(
-                          'Registrate',
-                          color: const Color(0xff346BC3),
+                        Text(
+                          AppStrings.signUp,
                         )
                       ],
                     )

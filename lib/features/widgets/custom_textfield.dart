@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
 
 class CustomTextfield extends StatelessWidget {
   final String? label;
@@ -15,7 +14,7 @@ class CustomTextfield extends StatelessWidget {
         if (label != null)
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: StyledText.bodySmall(label!),
+            child: Text(label!),
           ),
         TextFormField(
           decoration: InputDecoration(
@@ -36,7 +35,6 @@ class CustomTextfield extends StatelessWidget {
                 : null,
           ),
           onChanged: (value) {
-            // Dispatch event to validate form when the username changes
             // formBloc
             //     .add(ValidateFormEvent(username: value, password: ''));
           },

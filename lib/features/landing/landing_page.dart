@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -29,14 +30,14 @@ class LandingPage extends StatelessWidget {
                     child: Image.asset('assets/logo.png')),
                 const Spacer(),
                 CustomButton(
-                  text: 'Iniciar Sesion',
+                  text: AppStrings.logIn,
                   onPressed: () {
                     context.read<RouterCubit>().goToLogin();
                   },
                 ),
                 20.h,
                 CustomButton(
-                  text: 'Registrarme',
+                  text: AppStrings.signUp,
                   color: Colors.white.withOpacity(.2),
                   onPressed: () {
                     context.read<RouterCubit>().goToRegister();

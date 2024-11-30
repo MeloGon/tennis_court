@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/presentation/landing/landing_page.dart';
-import 'package:tennis_court/core/widgets/custom_button.dart';
-import 'package:tennis_court/core/widgets/styled_text.dart';
+import 'package:tennis_court/features/widgets/custom_button.dart';
 
 class CourtWidget extends StatelessWidget {
   const CourtWidget({super.key});
@@ -33,7 +31,7 @@ class CourtWidget extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        StyledText.bodyLarge(
+                        Text(
                           'postItem.title',
                           // style: const TextStyle(
                           //     fontSize: 16, fontWeight: FontWeight.w600),
@@ -47,11 +45,11 @@ class CourtWidget extends StatelessWidget {
                       children: [
                         const Icon(Icons.calendar_today_outlined),
                         5.w,
-                        StyledText.bodyMedium('9 de julio 2024'),
+                        Text('9 de julio 2024'),
                       ],
                     ),
                     10.h,
-                    StyledText.bodyMedium('Disponible 7:00 am a 4:00 pm '),
+                    Text('Disponible 7:00 am a 4:00 pm '),
                     30.h,
                     CustomButton(
                       marginH: 60,

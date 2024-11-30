@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/styled_text.dart';
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class ReservationPage extends StatelessWidget {
   const ReservationPage({super.key});
@@ -39,35 +40,36 @@ class ReservationPage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      StyledText.headlineMedium('Epicbox'),
+                      Text('Epicbox'),
                       const Spacer(),
-                      StyledText.headlineMedium('\$25'),
+                      Text('\$25'),
                     ],
                   ),
                   Row(
                     children: [
-                      StyledText.headlineMedium('Cancha tipo A'),
+                      Text('Cancha tipo A'),
                       const Spacer(),
-                      StyledText.headlineMedium('Por ahora'),
+                      Text('Por ahora'),
                     ],
                   ),
                   Row(
                     children: [
-                      StyledText.headlineMedium('Disponible 7 am a 4 pm'),
+                      Text('Disponible 7 am a 4 pm'),
                       const Spacer(),
-                      StyledText.headlineMedium('30%'),
+                      Text('30%'),
                     ],
                   ),
                   Row(
                     children: [
                       Icon(Icons.place_outlined),
-                      StyledText.headlineMedium('Va Av Caracas y Ab P'),
+                      Text('Va Av Caracas y Ab P'),
                     ],
                   ),
                   20.h,
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width * .5,
                     child: DropdownButtonFormField<String>(
+                        icon: const Icon(Icons.keyboard_arrow_down_outlined),
                         decoration: const InputDecoration(
                           hintText: 'Asss',
                           border: OutlineInputBorder(
@@ -75,8 +77,7 @@ class ReservationPage extends StatelessWidget {
                                   BorderSide(color: Colors.red, width: 2)),
                         ),
                         items: [
-                          DropdownMenuItem(
-                              child: StyledText.bodyMedium('text')),
+                          DropdownMenuItem(child: Text('text')),
                         ],
                         onChanged: (value) {}),
                   ),
@@ -88,55 +89,42 @@ class ReservationPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  StyledText.bodyLarge('Establecer fecha y hora'),
+                  Text(AppStrings.setDateAndTime),
                   20.h,
-                  DropdownButtonFormField<String>(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                      ),
-                      items: [
-                        DropdownMenuItem(child: StyledText.bodyMedium('text'))
-                      ],
-                      onChanged: (value) {}),
+                  CustomDropdown(),
                   20.h,
                   Row(
                     children: [
-                      SizedBox(
+                      CustomDropdown(
                         width: MediaQuery.sizeOf(context).width * .4,
-                        child: DropdownButtonFormField<String>(
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                            ),
-                            items: [
-                              DropdownMenuItem(
-                                  child: StyledText.bodyMedium('text'))
-                            ],
-                            onChanged: (value) {}),
                       ),
                       const Spacer(),
-                      SizedBox(
+                      CustomDropdown(
                         width: MediaQuery.sizeOf(context).width * .4,
-                        child: DropdownButtonFormField<String>(
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                            ),
-                            items: [
-                              DropdownMenuItem(
-                                  child: StyledText.bodyMedium('text'))
-                            ],
-                            onChanged: (value) {}),
                       ),
                     ],
                   ),
                   20.h,
-                  StyledText.bodyLarge('Agregar un comentario'),
+                  Text(AppStrings.addComment),
                   20.h,
-                  TextField(
-                    maxLines: 4,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: .2),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextField(
+                      maxLines: 4,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: AppStrings.addComment,
+                      ),
                     ),
                   ),
+                  30.h,
+                  CustomButton(
+                    onPressed: () {},
+                    text: AppStrings.reserve,
+                  )
                 ],
               ),
             ),

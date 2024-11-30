@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/custom_textfield.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
+import 'package:tennis_court/features/widgets/custom_textfield.dart';
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -24,7 +25,7 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      StyledText.headlineLarge('Registro'),
+                      Text(AppStrings.register),
                       Container(
                         height: 1,
                         color: Colors.grey,
@@ -32,43 +33,42 @@ class RegisterPage extends StatelessWidget {
                       ),
                       60.h,
                       CustomTextfield(
-                        label: "Nombre y apellido",
+                        label: AppStrings.nameAndLastname,
                         icon: Icon(Icons.person_outline),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: "Email",
+                        label: AppStrings.email,
                         icon: Icon(Icons.email_outlined),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: "Telefono",
+                        label: AppStrings.phone,
                         icon: Icon(Icons.phone_android_outlined),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: "Contraseña",
+                        label: AppStrings.password,
                         icon: Icon(Icons.lock_outline),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: "Confirmar contraseña",
+                        label: AppStrings.confirmPassword,
                         icon: Icon(Icons.lock_outline),
                       ),
                       60.h,
                       CustomButton(
-                        text: 'Registrarme',
+                        text: AppStrings.signUp,
                         onPressed: () {},
                       ),
                       60.h,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          StyledText.bodyLarge('Ya tengo cuenta'),
+                          Text(AppStrings.alreadyHaveAnAccount),
                           5.w,
-                          StyledText.bodyLarge(
-                            'Iniciar sesion',
-                            color: const Color(0xff346BC3),
+                          Text(
+                            AppStrings.logIn,
                           )
                         ],
                       )

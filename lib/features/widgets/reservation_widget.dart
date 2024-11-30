@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class ReservationWidget extends StatelessWidget {
   const ReservationWidget({super.key});
@@ -25,14 +25,10 @@ class ReservationWidget extends StatelessWidget {
           ),
         ),
       ),
-      title: StyledText.bodyMedium('EpicBox'),
+      title: Text('EpicBox'),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          StyledText.bodyMedium('EpicBox'),
-          StyledText.bodyMedium('EpicBox'),
-          StyledText.bodyMedium('EpicBox')
-        ],
+        children: [Text('EpicBox'), Text('EpicBox'), Text('EpicBox')],
       ),
     );
   }

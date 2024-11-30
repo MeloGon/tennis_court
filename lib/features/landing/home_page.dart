@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/core/extensions/extensions.dart';
-import 'package:tennis_court/core/widgets/widgets.dart';
+
+import 'package:tennis_court/features/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,12 +15,12 @@ class HomePage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: StyledText.headlineMedium('Hola Andrea!'),
+            child: Text('Hola Andrea!'),
           ),
           const Divider(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: StyledText.headlineSmall('Canchas'),
+            child: Text(AppStrings.courts),
           ),
           SizedBox(
             height: 490,
@@ -31,7 +33,7 @@ class HomePage extends StatelessWidget {
           const Divider(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: StyledText.headlineSmall('Reservas programadas'),
+            child: Text(AppStrings.scheduledReservations),
           ),
           ListView(
             physics: const NeverScrollableScrollPhysics(),
