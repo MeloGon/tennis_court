@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
-import 'package:tennis_court/core/extensions/extensions.dart';
 
 import 'package:tennis_court/features/landing/home_page.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
@@ -32,7 +31,7 @@ class _MainPageState extends State<MainPage> {
         title: AppStrings.tennis,
         actions: Row(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 10,
             ),
             10.w,
@@ -96,6 +95,7 @@ class _MainPageState extends State<MainPage> {
                   Icon(icon, color: AppColors.white),
                   Text(
                     label,
+                    style: context.bodyMedium?.copyWith(color: AppColors.white),
                   ),
                 ],
               ),

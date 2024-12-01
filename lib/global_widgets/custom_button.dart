@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? fontSize;
+  final double? borderRadius;
   const CustomButton(
       {super.key,
       this.text,
@@ -23,7 +24,8 @@ class CustomButton extends StatelessWidget {
       this.icon,
       this.width,
       this.height = 53,
-      this.fontSize = 20});
+      this.fontSize = 20,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +37,9 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
             elevation: 0,
             backgroundColor: color,
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
-                Radius.circular(15),
+                Radius.circular(borderRadius ?? 15),
               ),
             ),
           ),
@@ -53,8 +55,10 @@ class CustomButton extends StatelessWidget {
                   if (text != null)
                     Text(
                       text!,
-                      style:
-                          TextStyle(color: AppColors.white, fontSize: fontSize),
+                      style: TextStyle(
+                          color: AppColors.white,
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w600),
                     )
                 ],
               ),

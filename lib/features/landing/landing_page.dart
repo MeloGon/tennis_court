@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
-import 'package:tennis_court/core/extensions/extensions.dart';
+
 import 'package:tennis_court/global_widgets/widgets.dart';
 
 class LandingPage extends StatelessWidget {

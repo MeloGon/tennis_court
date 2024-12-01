@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
-import 'package:tennis_court/core/extensions/extensions.dart';
+
 import 'package:tennis_court/global_widgets/custom_textfield.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
 
@@ -21,54 +22,80 @@ class RegisterPage extends StatelessWidget {
                 Image.asset(AppImages.headerLogin),
                 20.h,
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(AppStrings.register),
+                      Text(
+                        AppStrings.register,
+                        style: context.headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      5.h,
                       Container(
                         height: 1,
-                        color: AppColors.grey,
+                        color: AppColors.blue346BC3,
                         width: 70,
                       ),
-                      60.h,
+                      40.h,
                       CustomTextfield(
-                        label: AppStrings.nameAndLastname,
-                        icon: Icon(Icons.person_outline),
+                        hint: AppStrings.nameAndLastname,
+                        icon: SvgPicture.asset(
+                          AppImages.personIcon,
+                        ),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: AppStrings.email,
-                        icon: Icon(Icons.email_outlined),
+                        hint: AppStrings.email,
+                        icon: SvgPicture.asset(
+                          AppImages.mailIcon,
+                        ),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: AppStrings.phone,
-                        icon: Icon(Icons.phone_android_outlined),
+                        hint: AppStrings.phone,
+                        icon: SvgPicture.asset(
+                          AppImages.phoneIcon,
+                        ),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: AppStrings.password,
-                        icon: Icon(Icons.lock_outline),
+                        hint: AppStrings.password,
+                        icon: SvgPicture.asset(
+                          AppImages.lockIcon,
+                        ),
                       ),
                       20.h,
                       CustomTextfield(
-                        label: AppStrings.confirmPassword,
-                        icon: Icon(Icons.lock_outline),
+                        hint: AppStrings.confirmPassword,
+                        icon: SvgPicture.asset(
+                          AppImages.lockIcon,
+                        ),
+                        suffixIcon: const Icon(
+                          Icons.remove_red_eye_outlined,
+                          color: AppColors.grey,
+                        ),
                       ),
-                      60.h,
+                      40.h,
                       CustomButton(
                         text: AppStrings.signUp,
                         onPressed: () {},
                       ),
-                      60.h,
+                      38.h,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(AppStrings.alreadyHaveAnAccount),
+                          Text(
+                            AppStrings.alreadyHaveAnAccount,
+                            style:
+                                context.bodyLarge?.copyWith(letterSpacing: .2),
+                          ),
                           5.w,
                           Text(
                             AppStrings.logIn,
+                            style: context.bodyLarge?.copyWith(
+                                color: AppColors.blue346BC3, letterSpacing: .2),
                           )
                         ],
                       )

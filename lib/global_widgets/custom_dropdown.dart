@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tennis_court/core/extensions/extensions.dart';
+import 'package:tennis_court/core/config.dart';
 
 class CustomDropdown extends StatelessWidget {
   final double? width;

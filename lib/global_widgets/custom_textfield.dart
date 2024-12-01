@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:tennis_court/core/extensions/extensions.dart';
+import 'package:tennis_court/core/config.dart';
 
 class CustomTextfield extends StatelessWidget {
   final String? label;
-  final Icon? icon;
-  const CustomTextfield({super.key, this.label, this.icon});
+  final TextStyle? hintStyle;
+  final String? hint;
+  final Widget? icon;
+  final Widget? suffixIcon;
+
+  const CustomTextfield(
+      {super.key,
+      this.label,
+      this.icon,
+      this.hint,
+      this.hintStyle,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +24,23 @@ class CustomTextfield extends StatelessWidget {
         if (label != null)
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: Text(label!),
+            child: Text(
+              label!,
+              style: context.bodySmall?.copyWith(color: AppColors.grey),
+            ),
           ),
         TextFormField(
           decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: hintStyle ?? context.bodyMedium,
+            contentPadding: const EdgeInsets.only(top: 13),
             prefixIcon: icon != null
                 ? Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       10.w,
                       icon!,
-                      5.w,
+                      8.w,
                       Container(
                         width: 1,
                         height: 20,
@@ -33,6 +49,7 @@ class CustomTextfield extends StatelessWidget {
                     ],
                   )
                 : null,
+            suffixIcon: suffixIcon,
           ),
           onChanged: (value) {
             // formBloc

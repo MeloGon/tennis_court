@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tennis_court/core/config.dart';
 
 class CustomAppbar extends PreferredSize {
   final double height;
@@ -22,7 +23,14 @@ class CustomAppbar extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xff251d81),
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[AppColors.black, AppColors.green82BC00]),
+        ),
+      ),
       leading: (goBack ?? false)
           ? InkWell(
               onTap: () {
