@@ -83,21 +83,24 @@ class LoginPage extends StatelessWidget {
                       },
                     ),
                     60.h,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppStrings.dontHaveAccountYet,
-                          style: context.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w400, letterSpacing: .2),
-                        ),
-                        5.w,
-                        Text(
-                          AppStrings.signUp,
-                          style: context.bodyLarge?.copyWith(
-                              color: AppColors.blue346BC3, letterSpacing: .2),
-                        )
-                      ],
+                    Align(
+                      alignment: Alignment.center,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        children: [
+                          Text(
+                            AppStrings.dontHaveAccountYet,
+                            style: context.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.w400, letterSpacing: .2),
+                          ),
+                          5.w,
+                          Text(
+                            AppStrings.signUp,
+                            style: context.bodyLarge?.copyWith(
+                                color: AppColors.blue346BC3, letterSpacing: .2),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

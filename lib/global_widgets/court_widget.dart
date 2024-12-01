@@ -93,7 +93,7 @@ class CourtWidget extends StatelessWidget {
                     ),
                     30.h,
                     CustomButton(
-                      marginH: 60,
+                      marginH: MediaQuery.sizeOf(context).width * .06,
                       height: 30,
                       borderRadius: 4,
                       fontSize: 14,

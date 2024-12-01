@@ -20,4 +20,7 @@ class AppStrings {
   static const String addComment = 'Agregar un comentario';
   static const String reserve = 'Reservar';
   static const String setDateAndTime = 'Establecer fecha y hora';
+  static const String date = 'Fecha';
+  static const String initTime = 'Hora de inicio';
+  static const String endTime = 'Hora de fin';
 }

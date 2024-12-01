@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
 
 class CustomDropdown extends StatelessWidget {
+  final String? label;
   final double? width;
-  const CustomDropdown({super.key, this.width = double.infinity});
+  const CustomDropdown({super.key, this.width = double.infinity, this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -12,20 +13,28 @@ class CustomDropdown extends StatelessWidget {
       width: width,
       height: 62,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: .2),
-          borderRadius: BorderRadius.circular(10)),
+        border: Border.all(color: AppColors.greyEEEFF1, width: .2),
+        borderRadius: BorderRadius.circular(10),
+        color: AppColors.white,
+      ),
       child: Stack(
         // crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.center,
         // mainAxisSize: MainAxisSize.max,
         children: [
-          Text('Fecha'),
+          Positioned(
+            top: 4,
+            child: Text(
+              label ?? '',
+              style: context.bodyMedium,
+            ),
+          ),
           Column(
             children: [
               8.h,
               DropdownButtonFormField<String>(
                   padding: EdgeInsets.zero,
-                  icon: Icon(Icons.keyboard_arrow_down_outlined),
+                  icon: const Icon(Icons.keyboard_arrow_down_outlined),
                   decoration: const InputDecoration(border: InputBorder.none),
                   items: [DropdownMenuItem(child: Text('data'))],
                   onChanged: (value) {}),

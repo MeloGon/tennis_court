@@ -12,4 +12,5 @@ class AppImages {
   static const String eyeIcon = 'assets/icons/eye_icon.svg';
   static const String calendarIcon = 'assets/icons/calendar_icon.svg';
   static const String clockIcon = 'assets/icons/clock_icon.svg';
+  static const String placeIcon = 'assets/icons/place_icon.svg';
 }

@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 400,
+              height: 404,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
