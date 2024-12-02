@@ -1,24 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
+import 'package:tennis_court/features/home/domain/entities/court.dart';
+import 'package:tennis_court/features/reservation/presentation/widgets/date_selector_widget.dart';
 import 'package:tennis_court/global_widgets/date_reservation_widget.dart';
-
 import 'package:tennis_court/global_widgets/widgets.dart';
 
-class ReservationPage extends StatefulWidget {
-  const ReservationPage({super.key});
+class ReservationPage extends StatelessWidget {
+  final Court? court;
+  const ReservationPage({super.key, this.court});
 
-  @override
-  State<ReservationPage> createState() => _ReservationPageState();
-}
-
-class _ReservationPageState extends State<ReservationPage> {
-  bool isOpen = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +27,7 @@ class _ReservationPageState extends State<ReservationPage> {
                     SizedBox(
                       width: double.infinity,
                       child: Image.asset(
-                        AppImages.court1,
+                        court!.imageUrl!,
                         fit: BoxFit.cover,
                       ),
                     )
@@ -91,7 +85,7 @@ class _ReservationPageState extends State<ReservationPage> {
                   Row(
                     children: [
                       Text(
-                        'EpicBox',
+                        court?.name ?? '',
                         style: context.headlineSmall
                             ?.copyWith(fontWeight: FontWeight.w500),
                       ),
@@ -108,7 +102,7 @@ class _ReservationPageState extends State<ReservationPage> {
                   Row(
                     children: [
                       Text(
-                        'Cancha tipo A',
+                        court?.type ?? '',
                         style: context.bodySmall?.copyWith(
                             fontWeight: FontWeight.w400, letterSpacing: .1),
                       ),
@@ -128,11 +122,13 @@ class _ReservationPageState extends State<ReservationPage> {
                         style: context.bodySmall?.copyWith(
                             fontWeight: FontWeight.w400, letterSpacing: .1),
                       ),
+                      10.w,
                       SvgPicture.asset(
                         AppImages.clockIcon,
                       ),
+                      10.w,
                       Text(
-                        ' 7 am a 4 pm',
+                        court?.availability ?? '',
                         style: context.bodySmall?.copyWith(
                             fontWeight: FontWeight.w400, letterSpacing: .1),
                       ),
@@ -188,39 +184,7 @@ class _ReservationPageState extends State<ReservationPage> {
                         ?.copyWith(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   20.h,
-                  // CustomDropdown(
-                  //   label: AppStrings.date,
-                  // ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: AppColors.white),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Fecha'),
-                            Text('09/12/2024'),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isOpen = !isOpen;
-                            });
-                          },
-                          child: const Icon(
-                            Icons.keyboard_arrow_down_outlined,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  widget(context, isOpen),
+                  DateSelectorWidget(),
                   20.h,
                   Row(
                     children: [
@@ -272,66 +236,4 @@ class _ReservationPageState extends State<ReservationPage> {
       ),
     );
   }
-}
-
-Widget widget(BuildContext context, bool isOpen) {
-  DateTime _currentDate = DateTime.now();
-  return AnimatedContainer(
-    margin: const EdgeInsets.symmetric(horizontal: 16.0),
-    duration: const Duration(seconds: 1),
-    curve: Curves.fastOutSlowIn,
-    child: (isOpen)
-        ? CalendarCarousel<Event>(
-            onDayPressed: (DateTime date, List<Event> events) {},
-            locale: 'es',
-            weekendTextStyle: context.bodySmall,
-            thisMonthDayBorderColor: AppColors.blueLightF5F8FB,
-            daysTextStyle: context.bodySmall,
-            weekdayTextStyle:
-                context.bodySmall?.copyWith(color: AppColors.grey),
-            headerTextStyle: context.bodySmall,
-            dayButtonColor: AppColors.blueLightF5F8FB,
-            selectedDayBorderColor: AppColors.blue346BC3,
-            selectedDayButtonColor: AppColors.blue346BC3,
-            headerMargin: const EdgeInsets.only(bottom: 0),
-            leftButtonIcon: const Icon(
-              Icons.arrow_back_ios,
-              size: 17,
-            ),
-            rightButtonIcon: const Icon(
-              Icons.arrow_forward_ios,
-              size: 17,
-            ),
-            weekFormat: false,
-            height: 410.0,
-            selectedDateTime: _currentDate,
-            daysHaveCircularBorder: true,
-          )
-        : CalendarCarousel<Event>(
-            onDayPressed: (DateTime date, List<Event> events) {},
-            locale: 'es',
-            weekendTextStyle: context.bodySmall,
-            thisMonthDayBorderColor: AppColors.blueLightF5F8FB,
-            daysTextStyle: context.bodySmall,
-            weekdayTextStyle:
-                context.bodySmall?.copyWith(color: AppColors.grey),
-            headerTextStyle: context.bodySmall,
-            dayButtonColor: AppColors.blueLightF5F8FB,
-            selectedDayBorderColor: AppColors.blue346BC3,
-            selectedDayButtonColor: AppColors.blue346BC3,
-            headerMargin: const EdgeInsets.only(bottom: 0),
-            leftButtonIcon: const Icon(
-              Icons.arrow_back_ios,
-              size: 17,
-            ),
-            rightButtonIcon: const Icon(
-              Icons.arrow_forward_ios,
-              size: 17,
-            ),
-            weekFormat: false,
-            height: 0,
-            selectedDateTime: _currentDate,
-            daysHaveCircularBorder: true,
-          ),
-  );
 }

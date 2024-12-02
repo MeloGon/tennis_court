@@ -1,3 +1,5 @@
+import 'package:tennis_court/core/config.dart';
+
 import '../models/court_model.dart';
 
 abstract interface class LocalCourtDataSource {
@@ -13,14 +15,21 @@ class LocalCourtDataSourceImpl implements LocalCourtDataSource {
         'id': '1',
         'name': 'Cancha Azul',
         'type': 'Tipo A',
-        'imageUrl': 'https://via.placeholder.com/400',
+        'imageUrl': AppImages.court1,
         'availability': '7:00 am a 4:00 pm',
       },
       {
         'id': '2',
-        'name': 'Cancha Verde',
+        'name': 'Rusty Tenis',
+        'type': 'Tipo C',
+        'imageUrl': AppImages.court2,
+        'availability': '8:00 am a 5:00 pm',
+      },
+      {
+        'id': '3',
+        'name': 'Cancha multiple',
         'type': 'Tipo B',
-        'imageUrl': 'https://via.placeholder.com/400',
+        'imageUrl': AppImages.court3,
         'availability': '8:00 am a 5:00 pm',
       },
     ];

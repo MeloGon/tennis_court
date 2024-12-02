@@ -29,7 +29,7 @@ class CourtWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
-                  AppImages.court1,
+                  court.imageUrl!,
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -58,7 +58,7 @@ class CourtWidget extends StatelessWidget {
                         ),
                         5.w,
                         Text(
-                          'court',
+                          '9 de Julio 2024',
                           style: context.bodySmall?.copyWith(
                               fontWeight: FontWeight.w400, letterSpacing: .1),
                         ),
@@ -68,7 +68,7 @@ class CourtWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Disponible',
+                          AppStrings.available,
                           style: context.bodySmall?.copyWith(
                               fontWeight: FontWeight.w400, letterSpacing: .1),
                         ),
@@ -78,7 +78,7 @@ class CourtWidget extends StatelessWidget {
                         ),
                         5.w,
                         Text(
-                          '7:00 am a 4:00 pm ',
+                          court.availability ?? '',
                           style: context.bodySmall?.copyWith(
                               fontWeight: FontWeight.w400, letterSpacing: .1),
                         ),
@@ -91,7 +91,7 @@ class CourtWidget extends StatelessWidget {
                       borderRadius: 4,
                       fontSize: 14,
                       onPressed: () {
-                        context.read<RouterCubit>().goToReservation();
+                        context.read<RouterCubit>().goToReservation(court);
                       },
                       text: AppStrings.reserve,
                     ),

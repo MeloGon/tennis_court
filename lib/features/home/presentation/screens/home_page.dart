@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/core/config.dart';
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is CourtLoadedState) {
                   return SizedBox(
-                    height: 404,
+                    height: Platform.isAndroid ? 404 : 420,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: state.courts.length,
@@ -56,18 +58,9 @@ class HomePage extends StatelessWidget {
                 } else if (state is CourtErrorState) {
                   return Center(child: Text(state.message));
                 }
-                return Center(child: Text('Cargando...'));
+                return const Center(child: Text(AppStrings.loading));
               },
             ),
-            // SizedBox(
-            //   height: 404,
-            //   child: ListView(
-            //     scrollDirection: Axis.horizontal,
-            //     shrinkWrap: true,
-            //     children: [CourtWidget(), CourtWidget(), CourtWidget()],
-            //   ),
-            // ),
-
             const Divider(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
