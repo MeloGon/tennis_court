@@ -4,7 +4,7 @@ import 'package:tennis_court/features/landing/main_page.dart';
 import 'package:tennis_court/features/landing/landing_page.dart';
 import 'package:tennis_court/features/landing/login_page.dart';
 import 'package:tennis_court/features/landing/register_page.dart';
-import 'package:tennis_court/features/landing/reservation_page.dart';
+import 'package:tennis_court/features/reserve/presentation/screens/reservation_page.dart';
 
 final _publicRouter = GoRouter(routes: [
   GoRoute(
