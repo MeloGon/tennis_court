@@ -23,4 +23,5 @@ class AppStrings {
   static const String date = 'Fecha';
   static const String initTime = 'Hora de inicio';
   static const String endTime = 'Hora de fin';
+  static const String forNow = 'Por hora';
 }

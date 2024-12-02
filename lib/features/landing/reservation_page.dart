@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/global_widgets/date_reservation_widget.dart';
 
@@ -56,7 +58,7 @@ class _ReservationPageState extends State<ReservationPage> {
                           color: AppColors.white,
                         ),
                         onPressed: () {
-                          //context.read<RouterCubit>().goLanding();
+                          context.read<RouterCubit>().goBack();
                         },
                         width: 30,
                       ),
@@ -90,13 +92,13 @@ class _ReservationPageState extends State<ReservationPage> {
                     children: [
                       Text(
                         'EpicBox',
-                        style: context.bodyLarge
+                        style: context.headlineSmall
                             ?.copyWith(fontWeight: FontWeight.w500),
                       ),
                       const Spacer(),
                       Text(
                         '\$25',
-                        style: context.bodyLarge?.copyWith(
+                        style: context.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: AppColors.blue346BC3),
                       ),
@@ -111,14 +113,26 @@ class _ReservationPageState extends State<ReservationPage> {
                             fontWeight: FontWeight.w400, letterSpacing: .1),
                       ),
                       const Spacer(),
-                      Text('Por ahora'),
+                      Text(
+                        AppStrings.forNow,
+                        style:
+                            context.bodySmall?.copyWith(color: AppColors.grey),
+                      ),
                     ],
                   ),
                   10.h,
                   Row(
                     children: [
                       Text(
-                        'Disponible 7 am a 4 pm',
+                        'Disponible ',
+                        style: context.bodySmall?.copyWith(
+                            fontWeight: FontWeight.w400, letterSpacing: .1),
+                      ),
+                      SvgPicture.asset(
+                        AppImages.clockIcon,
+                      ),
+                      Text(
+                        ' 7 am a 4 pm',
                         style: context.bodySmall?.copyWith(
                             fontWeight: FontWeight.w400, letterSpacing: .1),
                       ),
@@ -194,12 +208,15 @@ class _ReservationPageState extends State<ReservationPage> {
                           ],
                         ),
                         GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isOpen = !isOpen;
-                              });
-                            },
-                            child: const Icon(Icons.keyboard_arrow_down))
+                          onTap: () {
+                            setState(() {
+                              isOpen = !isOpen;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.keyboard_arrow_down_outlined,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -233,6 +250,7 @@ class _ReservationPageState extends State<ReservationPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: AppColors.white),
                     child: TextField(
+                      textInputAction: TextInputAction.done,
                       maxLines: 4,
                       decoration: InputDecoration(
                         border: InputBorder.none,

@@ -33,7 +33,7 @@ class RouterCubit extends Cubit<GoRouter> {
   RouterCubit() : super(_publicRouter);
 
   void goToLogin() {
-    state.go('/login');
+    state.push('/login');
   }
 
   void goBack() {
@@ -41,18 +41,18 @@ class RouterCubit extends Cubit<GoRouter> {
   }
 
   void goLanding() {
-    state.go('/');
+    state.push('/');
   }
 
   void goToRegister() {
-    state.go('/register');
+    state.push('/register');
   }
 
   void goToMain() {
-    state.go('/main');
+    state.push('/main');
   }
 
   void goToReservation() {
-    state.go('/reservation');
+    state.push('/reservation');
   }
 }
