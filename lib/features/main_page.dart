@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
 
 import 'package:tennis_court/features/home/presentation/screens/home_page.dart';
+import 'package:tennis_court/features/reservations/presentation/screens/reservations_page.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
 
 class MainPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     HomePage(),
-    Center(child: Text(AppStrings.reservations)),
+    ReservationsPage(),
     Center(child: Text(AppStrings.favorites)),
   ];
 

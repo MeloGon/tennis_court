@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tennis_court/features/home/domain/entities/court.dart';
-import 'package:tennis_court/features/landing/main_page.dart';
+import 'package:tennis_court/features/main_page.dart';
 import 'package:tennis_court/features/landing/presentation/screens/landing_page.dart';
-import 'package:tennis_court/features/landing/login_page.dart';
-import 'package:tennis_court/features/landing/register_page.dart';
+import 'package:tennis_court/features/login/presentation/screens/login_page.dart';
+import 'package:tennis_court/features/register/presentation/screens/register_page.dart';
 import 'package:tennis_court/features/reservation/presentation/screens/reservation_page.dart';
 
 final _publicRouter = GoRouter(routes: [

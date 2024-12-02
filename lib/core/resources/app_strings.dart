@@ -8,7 +8,7 @@ class AppStrings {
   static const String rememberPassword = 'Recordar contraseña';
   static const String forgotPassword = '¿Olvidaste tu contraseña?';
   static const String dontHaveAccountYet = '¿Aún no tienes una cuenta ?';
-  static const String reservations = 'Reservations';
+  static const String reservations = 'Reservas';
   static const String favorites = 'Favoritos';
   static const String tennis = 'Tennis';
   static const String init = 'Inicio';
