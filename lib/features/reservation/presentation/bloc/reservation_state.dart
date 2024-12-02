@@ -36,14 +36,15 @@ final class ReservationFormState extends ReservationState {
   final String? endTime;
   final String? instructor;
   final String? comment;
+  final Court? court;
 
-  ReservationFormState({
-    this.date,
-    this.startTime,
-    this.endTime,
-    this.instructor,
-    this.comment,
-  });
+  ReservationFormState(
+      {this.date,
+      this.startTime,
+      this.endTime,
+      this.instructor,
+      this.comment,
+      this.court});
 
   ReservationFormState copyWith({
     DateTime? date,
@@ -51,16 +52,18 @@ final class ReservationFormState extends ReservationState {
     String? endTime,
     String? instructor,
     String? comment,
+    Court? court,
   }) {
     return ReservationFormState(
-      date: date ?? this.date,
-      startTime: startTime ?? this.startTime,
-      endTime: endTime ?? this.endTime,
-      instructor: instructor ?? this.instructor,
-      comment: comment ?? this.comment,
-    );
+        date: date ?? this.date,
+        startTime: startTime ?? this.startTime,
+        endTime: endTime ?? this.endTime,
+        instructor: instructor ?? this.instructor,
+        comment: comment ?? this.comment,
+        court: court ?? this.court);
   }
 
   @override
-  List<Object?> get props => [date, startTime, endTime, instructor, comment];
+  List<Object?> get props =>
+      [date, startTime, endTime, instructor, comment, court];
 }

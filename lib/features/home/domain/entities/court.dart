@@ -4,6 +4,7 @@ class Court {
   final String? type;
   final String? imageUrl;
   final String? availability;
+  final String? price;
 
   Court({
     required this.id,
@@ -11,5 +12,6 @@ class Court {
     required this.type,
     required this.imageUrl,
     required this.availability,
+    required this.price,
   });
 }

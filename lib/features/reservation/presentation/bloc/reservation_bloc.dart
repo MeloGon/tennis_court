@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tennis_court/core/di/service_locator.dart';
 import 'package:tennis_court/core/usecase/usecase.dart';
+import 'package:tennis_court/features/home/domain/entities/court.dart';
 import 'package:tennis_court/features/reservation/domain/entities/reservation.dart';
 import 'package:tennis_court/features/reservation/domain/usecases/add_reservation_usecase.dart';
 import 'package:tennis_court/features/reservation/domain/usecases/delete_reservation_usecase.dart';
@@ -22,6 +23,7 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
     on<UpdateReservationInstructorEvent>(_onUpdateInstructor);
     on<UpdateReservationCommentEvent>(_onUpdateComment);
     on<SubmitReservationEvent>(_onSubmitReservation);
+    on<ChargeCourtDataEvent>(_onChargeCourtData);
   }
 
   void loadReservations() {
@@ -123,26 +125,32 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
     }
   }
 
+  void _onChargeCourtData(
+      ChargeCourtDataEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit((state as ReservationFormState).copyWith(court: event.court));
+    } else {
+      emit(ReservationFormState(court: event.court));
+    }
+  }
+
   void _onSubmitReservation(
       SubmitReservationEvent event, Emitter<ReservationState> emit) {
     if (state is ReservationFormState) {
       final formState = state as ReservationFormState;
-      if (formState.date != null &&
-          formState.startTime != null &&
-          formState.endTime != null &&
-          formState.instructor != null &&
-          formState.comment != null) {
-        final reservation = Reservation(
-          reservationDate: formState.date!,
-          initTime: formState.startTime!,
-          endTime: formState.endTime!,
-          instructor: formState.instructor!,
-          comment: formState.comment!,
-        );
-        addReservation(reservation);
-      } else {
-        emit(ReservationErrorState('Por favor, completa todos los campos'));
-      }
+      final reservation = Reservation(
+        reservationDate: formState.date!,
+        initTime: formState.startTime!,
+        endTime: formState.endTime!,
+        instructor: formState.instructor!,
+        comment: formState.comment!,
+        courtName: formState.court!.name!,
+        price: formState.court!.price!,
+        photo: formState.court!.imageUrl,
+      );
+      addReservation(reservation);
+    } else {
+      emit(ReservationErrorState('Please complete all the fields'));
     }
   }
 }

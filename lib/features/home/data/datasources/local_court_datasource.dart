@@ -17,13 +17,15 @@ class LocalCourtDataSourceImpl implements LocalCourtDataSource {
         'type': 'Tipo A',
         'imageUrl': AppImages.court1,
         'availability': '7:00 am a 4:00 pm',
+        'price': '25'
       },
       {
         'id': '2',
         'name': 'Rusty Tenis',
         'type': 'Tipo C',
         'imageUrl': AppImages.court2,
-        'availability': '8:00 am a 5:00 pm',
+        'availability': '9:00 am a 10:00 pm',
+        'price': '35'
       },
       {
         'id': '3',
@@ -31,6 +33,7 @@ class LocalCourtDataSourceImpl implements LocalCourtDataSource {
         'type': 'Tipo B',
         'imageUrl': AppImages.court3,
         'availability': '8:00 am a 5:00 pm',
+        'price': '45'
       },
     ];
     return data.map((json) => CourtModel.fromJson(json)).toList();

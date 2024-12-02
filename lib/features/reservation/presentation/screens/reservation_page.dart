@@ -15,6 +15,7 @@ class ReservationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ReservationBloc>().add(ChargeCourtDataEvent(court!));
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

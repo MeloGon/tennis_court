@@ -77,3 +77,12 @@ final class SubmitReservationEvent extends ReservationEvent {
   @override
   List<Object?> get props => [];
 }
+
+final class ChargeCourtDataEvent extends ReservationEvent {
+  final Court court;
+
+  const ChargeCourtDataEvent(this.court);
+
+  @override
+  List<Object?> get props => [court];
+}

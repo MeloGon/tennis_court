@@ -38,7 +38,7 @@ class _InfoCourtWidgetState extends State<InfoCourtWidget> {
               ),
               const Spacer(),
               Text(
-                '\$25',
+                '\$${widget.court?.price}',
                 style: context.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w600, color: AppColors.blue346BC3),
               ),
