@@ -4,7 +4,16 @@ import 'package:tennis_court/core/config.dart';
 class CustomDropdown extends StatelessWidget {
   final String? label;
   final double? width;
-  const CustomDropdown({super.key, this.width = double.infinity, this.label});
+  final Widget? hint;
+  final List<DropdownMenuItem<String>>? items;
+  final Function(String?)? onChanged;
+  const CustomDropdown(
+      {super.key,
+      this.width = double.infinity,
+      this.label,
+      required this.items,
+      required this.onChanged,
+      this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +27,6 @@ class CustomDropdown extends StatelessWidget {
         color: AppColors.white,
       ),
       child: Stack(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
         children: [
           Positioned(
             top: 4,
@@ -36,8 +42,9 @@ class CustomDropdown extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   icon: const Icon(Icons.keyboard_arrow_down_outlined),
                   decoration: const InputDecoration(border: InputBorder.none),
-                  items: [DropdownMenuItem(child: Text('data'))],
-                  onChanged: (value) {}),
+                  hint: hint,
+                  items: items,
+                  onChanged: onChanged),
             ],
           ),
         ],
