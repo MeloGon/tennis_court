@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tennis_court/core/di/service_locator.dart';
 import 'package:tennis_court/core/usecase/usecase.dart';
-import 'package:tennis_court/features/reserve/domain/entities/reservation.dart';
-import 'package:tennis_court/features/reserve/domain/usecases/add_reservation_usecase.dart';
-import 'package:tennis_court/features/reserve/domain/usecases/delete_reservation_usecase.dart';
-import 'package:tennis_court/features/reserve/domain/usecases/get_reservations_usecase.dart';
+import 'package:tennis_court/features/reservation/domain/entities/reservation.dart';
+import 'package:tennis_court/features/reservation/domain/usecases/add_reservation_usecase.dart';
+import 'package:tennis_court/features/reservation/domain/usecases/delete_reservation_usecase.dart';
+import 'package:tennis_court/features/reservation/domain/usecases/get_reservations_usecase.dart';
 
 part 'reservation_event.dart';
 part 'reservation_state.dart';

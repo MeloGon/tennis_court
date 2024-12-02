@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
+import 'package:tennis_court/features/home/domain/entities/court.dart';
 
 import 'package:tennis_court/global_widgets/custom_button.dart';
 
 class CourtWidget extends StatelessWidget {
-  const CourtWidget({super.key});
+  final Court court;
+  const CourtWidget({super.key, required this.court});
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +39,14 @@ class CourtWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'postItem.title',
-                          style: context.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          'postItem.title',
-                          style: context.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                    Text(
+                      court.name ?? '',
+                      style: context.bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.w500),
                     ),
                     10.h,
                     Text(
-                      'Cancha tipo A',
+                      court.type ?? '',
                       style: context.bodySmall?.copyWith(
                           fontWeight: FontWeight.w400, letterSpacing: .1),
                     ),
@@ -65,7 +58,7 @@ class CourtWidget extends StatelessWidget {
                         ),
                         5.w,
                         Text(
-                          '9 de julio 2024',
+                          'court',
                           style: context.bodySmall?.copyWith(
                               fontWeight: FontWeight.w400, letterSpacing: .1),
                         ),

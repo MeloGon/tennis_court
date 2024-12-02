@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/di/service_locator.dart';
-import 'package:tennis_court/features/reserve/data/models/reservation_model.dart';
-import 'package:tennis_court/features/reserve/presentation/bloc/reservation_bloc.dart';
+import 'package:tennis_court/features/home/presentation/bloc/court_bloc.dart';
+import 'package:tennis_court/features/reservation/data/models/reservation_model.dart';
+import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ class BlocProviders extends StatelessWidget {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context) => getIt<RouterCubit>()),
       BlocProvider(create: (context) => getIt<ReservationBloc>()),
+      BlocProvider(create: (context) => getIt<CourtBloc>()),
     ], child: const MyApp());
   }
 }

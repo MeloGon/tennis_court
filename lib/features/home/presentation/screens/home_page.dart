@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/core/config.dart';
+import 'package:tennis_court/features/home/presentation/bloc/court_bloc.dart';
 
 import 'package:tennis_court/global_widgets/widgets.dart';
 
@@ -32,14 +34,40 @@ class HomePage extends StatelessWidget {
                     ?.copyWith(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
-            SizedBox(
-              height: 404,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [CourtWidget(), CourtWidget(), CourtWidget()],
-              ),
+            BlocBuilder<CourtBloc, CourtState>(
+              builder: (context, state) {
+                if (state is CourtLoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is CourtLoadedState) {
+                  return SizedBox(
+                    height: 404,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.courts.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final court = state.courts[index];
+                        return CourtWidget(
+                          court: court,
+                        );
+                      },
+                    ),
+                  );
+                } else if (state is CourtErrorState) {
+                  return Center(child: Text(state.message));
+                }
+                return Center(child: Text('Cargando...'));
+              },
             ),
+            // SizedBox(
+            //   height: 404,
+            //   child: ListView(
+            //     scrollDirection: Axis.horizontal,
+            //     shrinkWrap: true,
+            //     children: [CourtWidget(), CourtWidget(), CourtWidget()],
+            //   ),
+            // ),
+
             const Divider(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

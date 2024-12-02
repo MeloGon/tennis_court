@@ -1,5 +1,5 @@
-import 'package:tennis_court/features/reserve/data/models/reservation_model.dart';
-import 'package:tennis_court/features/reserve/domain/entities/reservation.dart';
+import 'package:tennis_court/features/reservation/data/models/reservation_model.dart';
+import 'package:tennis_court/features/reservation/domain/entities/reservation.dart';
 
 extension ReservationModelMapper on ReservationModel {
   Reservation toEntity() {

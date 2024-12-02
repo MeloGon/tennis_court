@@ -4,9 +4,9 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:tennis_court/core/error/exceptions.dart';
 import 'package:tennis_court/core/error/failure.dart';
 import 'package:tennis_court/core/extensions/reservation_extension.dart';
-import 'package:tennis_court/features/reserve/data/models/reservation_model.dart';
-import 'package:tennis_court/features/reserve/domain/entities/reservation.dart';
-import 'package:tennis_court/features/reserve/domain/repositories/reservation_repository.dart';
+import 'package:tennis_court/features/reservation/data/models/reservation_model.dart';
+import 'package:tennis_court/features/reservation/domain/entities/reservation.dart';
+import 'package:tennis_court/features/reservation/domain/repositories/reservation_repository.dart';
 
 class ReservationRepositoryImpl implements ReservationRepository {
   final Box<ReservationModel> box;
