@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/home/domain/entities/court.dart';
+import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 
 class InfoCourtWidget extends StatefulWidget {
   final Court? court;
@@ -115,6 +117,9 @@ class _InfoCourtWidgetState extends State<InfoCourtWidget> {
                 onChanged: (value) {
                   setState(() {
                     selectedInstructor = value;
+                    context.read<ReservationBloc>().add(
+                          UpdateReservationInstructorEvent(selectedInstructor!),
+                        );
                   });
                 }),
           ),

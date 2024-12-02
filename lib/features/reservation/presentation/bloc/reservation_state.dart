@@ -29,3 +29,38 @@ final class ReservationErrorState extends ReservationState {
   @override
   List<Object?> get props => [message];
 }
+
+final class ReservationFormState extends ReservationState {
+  final DateTime? date;
+  final String? startTime;
+  final String? endTime;
+  final String? instructor;
+  final String? comment;
+
+  ReservationFormState({
+    this.date,
+    this.startTime,
+    this.endTime,
+    this.instructor,
+    this.comment,
+  });
+
+  ReservationFormState copyWith({
+    DateTime? date,
+    String? startTime,
+    String? endTime,
+    String? instructor,
+    String? comment,
+  }) {
+    return ReservationFormState(
+      date: date ?? this.date,
+      startTime: startTime ?? this.startTime,
+      endTime: endTime ?? this.endTime,
+      instructor: instructor ?? this.instructor,
+      comment: comment ?? this.comment,
+    );
+  }
+
+  @override
+  List<Object?> get props => [date, startTime, endTime, instructor, comment];
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/home/domain/entities/court.dart';
+import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 import 'package:tennis_court/features/reservation/presentation/widgets/date_selector_widget.dart';
 import 'package:tennis_court/features/reservation/presentation/widgets/header_court_widget.dart';
 import 'package:tennis_court/features/reservation/presentation/widgets/info_court_widget.dart';
@@ -36,7 +38,11 @@ class ReservationPage extends StatelessWidget {
                   const InputsReservationWidget(),
                   30.h,
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context
+                          .read<ReservationBloc>()
+                          .add(SubmitReservationEvent());
+                    },
                     text: AppStrings.reserve,
                   ),
                 ],

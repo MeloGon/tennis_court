@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/core/config.dart';
+import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
 
 class InputsReservationWidget extends StatefulWidget {
@@ -40,6 +42,9 @@ class _InputsReservationWidgetState extends State<InputsReservationWidget> {
               onChanged: (String? newValue) {
                 setState(() {
                   selectedEndTime = newValue;
+                  context.read<ReservationBloc>().add(
+                        UpdateReservationStartTimeEvent(selectedEndTime!),
+                      );
                 });
               },
               hint: Text(
@@ -60,6 +65,9 @@ class _InputsReservationWidgetState extends State<InputsReservationWidget> {
               onChanged: (String? newValue) {
                 setState(() {
                   selectedEndTime = newValue;
+                  context.read<ReservationBloc>().add(
+                        UpdateReservationEndTimeEvent(selectedEndTime!),
+                      );
                 });
               },
               hint: Text(
@@ -85,10 +93,20 @@ class _InputsReservationWidgetState extends State<InputsReservationWidget> {
           child: TextField(
             textInputAction: TextInputAction.done,
             maxLines: 4,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: AppStrings.addComment,
             ),
+            onChanged: (value) {
+              context
+                  .read<ReservationBloc>()
+                  .add(UpdateReservationCommentEvent(value));
+            },
+            // onSubmitted: (value) {
+            //   context
+            //       .read<ReservationBloc>()
+            //       .add(UpdateReservationCommentEvent(value));
+            // },
           ),
         ),
       ],

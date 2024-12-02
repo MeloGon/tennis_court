@@ -26,4 +26,5 @@ class AppStrings {
   static const String forNow = 'Por hora';
   static const String available = 'Disponible';
   static const String loading = 'Cargando';
+  static const String withoutReserves = 'Aun no hay reservas programadas';
 }

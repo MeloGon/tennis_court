@@ -15,6 +15,13 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
     on<LoadReservationsEvent>(_onLoadReservations);
     on<AddReservationEvent>(_onAddReservation);
     on<DeleteReservationEvent>(_onDeleteReservation);
+    //
+    on<UpdateReservationDateEvent>(_onUpdateDate);
+    on<UpdateReservationStartTimeEvent>(_onUpdateStartTime);
+    on<UpdateReservationEndTimeEvent>(_onUpdateEndTime);
+    on<UpdateReservationInstructorEvent>(_onUpdateInstructor);
+    on<UpdateReservationCommentEvent>(_onUpdateComment);
+    on<SubmitReservationEvent>(_onSubmitReservation);
   }
 
   void loadReservations() {
@@ -66,6 +73,76 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       add(LoadReservationsEvent());
     } catch (e) {
       emit(ReservationErrorState('Failed to delete reservation'));
+    }
+  }
+
+  void _onUpdateDate(
+      UpdateReservationDateEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit((state as ReservationFormState).copyWith(date: event.date));
+    } else {
+      emit(ReservationFormState(date: event.date));
+    }
+  }
+
+  void _onUpdateStartTime(
+      UpdateReservationStartTimeEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit(
+          (state as ReservationFormState).copyWith(startTime: event.startTime));
+    } else {
+      emit(ReservationFormState(startTime: event.startTime));
+    }
+  }
+
+  void _onUpdateEndTime(
+      UpdateReservationEndTimeEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit((state as ReservationFormState).copyWith(endTime: event.endTime));
+    } else {
+      emit(ReservationFormState(endTime: event.endTime));
+    }
+  }
+
+  void _onUpdateInstructor(
+      UpdateReservationInstructorEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit((state as ReservationFormState)
+          .copyWith(instructor: event.instructor));
+    } else {
+      emit(ReservationFormState(instructor: event.instructor));
+    }
+  }
+
+  void _onUpdateComment(
+      UpdateReservationCommentEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      emit((state as ReservationFormState).copyWith(comment: event.comment));
+    } else {
+      emit(ReservationFormState(comment: event.comment));
+    }
+  }
+
+  void _onSubmitReservation(
+      SubmitReservationEvent event, Emitter<ReservationState> emit) {
+    if (state is ReservationFormState) {
+      final formState = state as ReservationFormState;
+      if (formState.date != null &&
+          formState.startTime != null &&
+          formState.endTime != null &&
+          formState.instructor != null &&
+          formState.comment != null) {
+        final reservation = Reservation(
+          reservationDate: formState.date!,
+          initTime: formState.startTime!,
+          endTime: formState.endTime!,
+          instructor: formState.instructor!,
+          comment: formState.comment!,
+        );
+        addReservation(reservation);
+      } else {
+        emit(ReservationErrorState('Por favor, completa todos los campos'));
+      }
     }
   }
 }

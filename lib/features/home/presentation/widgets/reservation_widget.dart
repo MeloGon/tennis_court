@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tennis_court/core/config.dart';
+import 'package:tennis_court/features/reservation/domain/entities/reservation.dart';
 
 class ReservationWidget extends StatelessWidget {
-  final String? title;
-  final String? reservationDate;
-  final String? reservationBy;
-  final String? reservationTime;
-  final String? reservationCost;
-  const ReservationWidget(
-      {super.key,
-      this.title,
-      this.reservationDate,
-      this.reservationBy,
-      this.reservationTime,
-      this.reservationCost});
+  final Reservation reservation;
+  const ReservationWidget({super.key, required this.reservation});
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: const BoxDecoration(color: AppColors.blueLightF4F7FC),
       child: ListTile(
-        onTap: () {},
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: SizedBox.square(
@@ -31,15 +21,17 @@ class ReservationWidget extends StatelessWidget {
             ),
           ),
         ),
-        title: Text('EpicBox'),
+        title: Text(reservation.initTime ?? ''),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('EpicBox'),
+            Text(reservation.courtName ?? ''),
             6.h,
-            Text('EpicBox'),
+            Text(reservation.reservationDate.toString()),
             6.h,
-            Text('EpicBox')
+            Text(reservation.client ?? ''),
+            6.h,
+            Text(reservation.totalTime ?? '')
           ],
         ),
       ),

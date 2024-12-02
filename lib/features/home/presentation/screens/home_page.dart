@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/home/presentation/bloc/court_bloc.dart';
+import 'package:tennis_court/features/home/presentation/widgets/reservations_list_widget.dart';
 
 import 'package:tennis_court/global_widgets/widgets.dart';
 
@@ -71,17 +72,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             5.h,
-            ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                ReservationWidget(),
-                10.h,
-                ReservationWidget(),
-                10.h,
-                ReservationWidget(),
-              ],
-            )
+            const ReservationsListWidget()
           ],
         ),
       ),
