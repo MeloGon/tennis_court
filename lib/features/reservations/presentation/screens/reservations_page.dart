@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 import 'package:tennis_court/features/reservations/presentation/widgets/reservation_tab_item_widget.dart';

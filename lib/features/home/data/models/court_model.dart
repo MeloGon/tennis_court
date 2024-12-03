@@ -7,26 +7,32 @@ class CourtModel extends Court {
       super.type,
       super.imageUrl,
       super.availability,
-      super.price});
+      super.price,
+      super.isFavorite});
 
   factory CourtModel.fromJson(Map<String, dynamic> json) {
     return CourtModel(
-        id: json['id'],
-        name: json['name'],
-        type: json['type'],
-        imageUrl: json['imageUrl'],
-        availability: json['availability'],
-        price: json['price']);
+      id: json['id'],
+      name: json['name'],
+      type: json['type'],
+      imageUrl: json['imageUrl'],
+      availability: json['availability'],
+      price: json['price'],
+      isFavorite: json['isFavorite'],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'type': type,
-      'imageUrl': imageUrl,
-      'availability': availability,
-      'price': price
-    };
+  CourtModel copyWith({
+    bool? isFavorite,
+  }) {
+    return CourtModel(
+      id: id,
+      name: name,
+      imageUrl: imageUrl,
+      isFavorite: isFavorite ?? this.isFavorite,
+      type: type,
+      availability: availability,
+      price: price,
+    );
   }
 }

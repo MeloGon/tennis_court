@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:tennis_court/config/router/app_router.dart';
+import 'package:tennis_court/features/favorites/domain/usecases/add_favorite_usecase.dart';
+import 'package:tennis_court/features/favorites/domain/usecases/get_favorites_usecase.dart';
+import 'package:tennis_court/features/favorites/domain/usecases/remove_favorite_usecase.dart';
 import 'package:tennis_court/features/home/data/datasources/local_court_datasource.dart';
 import 'package:tennis_court/features/home/data/repositories/court_repository_impl.dart';
 import 'package:tennis_court/features/home/domain/repositories/court_repository.dart';
@@ -38,4 +41,11 @@ void serviceLocatorInit() async {
   getIt
       .registerLazySingleton<GetCourtsUsecase>(() => GetCourtsUsecase(getIt()));
   getIt.registerSingleton(CourtBloc()..loadCourts());
+  //favorite
+  getIt.registerLazySingleton<AddFavoriteUsecase>(
+      () => AddFavoriteUsecase(getIt()));
+  getIt.registerLazySingleton<RemoveFavoriteUsecase>(
+      () => RemoveFavoriteUsecase(getIt()));
+  getIt.registerLazySingleton<GetFavoritesUsecase>(
+      () => GetFavoritesUsecase(getIt()));
 }

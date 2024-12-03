@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/home/domain/entities/court.dart';
+import 'package:tennis_court/features/home/presentation/bloc/court_bloc.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
 
 class HeaderCourtWidget extends StatelessWidget {
@@ -47,14 +48,39 @@ class HeaderCourtWidget extends StatelessWidget {
                 },
                 width: 30,
               ),
-              IconButton(
-                  onPressed: () {
-                    //////
-                  },
-                  icon: const Icon(
-                    Icons.favorite_border,
-                    color: AppColors.white,
-                  ))
+              BlocBuilder<CourtBloc, CourtState>(
+                builder: (context, state) {
+                  if (state is CourtLoadedState) {
+                    final updatedCourt =
+                        state.courts.firstWhere((c) => c.id == court!.id);
+
+                    return IconButton(
+                      onPressed: () {
+                        context
+                            .read<CourtBloc>()
+                            .add(ToggleFavoriteEvent(court!.id!));
+                        final message = updatedCourt.isFavorite ?? false
+                            ? 'Eliminado de favoritos'
+                            : 'Añadido a favoritos';
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(message)),
+                        );
+                      },
+                      icon: updatedCourt.isFavorite ?? false
+                          ? const Icon(
+                              Icons.favorite,
+                              color: AppColors.red,
+                            )
+                          : const Icon(
+                              Icons.favorite_border,
+                              color: AppColors.white,
+                            ),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
+              )
             ],
           ),
         )
