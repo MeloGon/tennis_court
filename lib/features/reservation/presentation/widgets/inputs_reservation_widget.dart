@@ -102,11 +102,6 @@ class _InputsReservationWidgetState extends State<InputsReservationWidget> {
                   .read<ReservationBloc>()
                   .add(UpdateReservationCommentEvent(value));
             },
-            // onSubmitted: (value) {
-            //   context
-            //       .read<ReservationBloc>()
-            //       .add(UpdateReservationCommentEvent(value));
-            // },
           ),
         ),
       ],

@@ -26,6 +26,10 @@ class CourtBloc extends Bloc<CourtEvent, CourtState> {
 
   Future<void> _onLoadCourts(
       LoadCourtsEvent event, Emitter<CourtState> emit) async {
+    if (state is CourtLoadedState) {
+      emit(state);
+      return;
+    }
     try {
       final courts = await getIt<GetCourtsUsecase>().call(NoParams());
       courts.fold((failure) => emit(CourtErrorState(failure.message)),
@@ -37,24 +41,6 @@ class CourtBloc extends Bloc<CourtEvent, CourtState> {
 
   void _onToggleFavorite(
       ToggleFavoriteEvent event, Emitter<CourtState> emit) async {
-    // if (state is CourtLoadedState) {
-    //   final currentState = state as CourtLoadedState;
-    //   final courts = currentState.courts.map((court) {
-    //     if (court.id == event.courtId) {
-    //       final updatedCourt =
-    //           court.copyWith(isFavorite: !(court.isFavorite ?? false));
-    //       if (updatedCourt.isFavorite ?? false) {
-    //         addFavoriteUseCase(court.id);
-    //       } else {
-    //         removeFavoriteUseCase(court.id);
-    //       }
-    //       return updatedCourt;
-    //     }
-    //     return court;
-    //   }).toList();
-
-    //   emit(CourtLoadedState(courts));
-    // }
     if (state is CourtLoadedState) {
       final currentState = state as CourtLoadedState;
       final court =

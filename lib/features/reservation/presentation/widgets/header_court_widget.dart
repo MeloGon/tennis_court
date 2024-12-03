@@ -5,6 +5,7 @@ import 'package:tennis_court/config/router/app_router.dart';
 import 'package:tennis_court/core/config.dart';
 import 'package:tennis_court/features/home/domain/entities/court.dart';
 import 'package:tennis_court/features/home/presentation/bloc/court_bloc.dart';
+import 'package:tennis_court/features/reservation/presentation/bloc/reservation_bloc.dart';
 import 'package:tennis_court/global_widgets/widgets.dart';
 
 class HeaderCourtWidget extends StatelessWidget {
@@ -45,6 +46,7 @@ class HeaderCourtWidget extends StatelessWidget {
                 ),
                 onPressed: () {
                   context.read<RouterCubit>().goBack();
+                  context.read<ReservationBloc>().loadReservations();
                 },
                 width: 30,
               ),
